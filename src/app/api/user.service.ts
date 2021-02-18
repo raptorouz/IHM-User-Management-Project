@@ -2,13 +2,24 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
+import { User } from '../interface/user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+  editUser(user: User) {
+    return this.httpApi.patch('https://reqres.in/api/users', JSON.stringify(user)).pipe(
+      map((response: User) => response)
+    );
+  }
   deleteUser(id: number):Observable<any> {
     return this.httpApi.delete('https://reqres.in/api/users/2').pipe((response:any) => response);
+  }
+  postAddUser(user: User) {
+    return this.httpApi.post('https://reqres.in/api/users', JSON.stringify(user)).pipe(
+      map((response: User) => response)
+    );
   }
 
   constructor(public httpApi: HttpClient) { }

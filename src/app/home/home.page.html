@@ -14,9 +14,9 @@
         </ion-toolbar>
     </ion-header>
   <div style="width:100%;text-align:center">
-    <ion-button style="margin-top:5px;">
+    <ion-button style="margin-top:5px;" (click)="addUserModal()">
         <ion-icon name="add"></ion-icon>
     </ion-button>
 </div>
-    <app-user-list [userList]="userList$ | async" (deletedUser)="refreshDelete($event)"></app-user-list>
+    <app-user-list [userList]="userList$ | async" (deletedUser)="refreshDelete($event)" (addUserClicked)="addUserModal()" (editUserClicked)="editUserModal($event)"></app-user-list>
 </ion-content>

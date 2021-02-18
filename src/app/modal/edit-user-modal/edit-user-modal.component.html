@@ -1,0 +1,44 @@
+<ion-header>
+    <ion-toolbar>
+            <ion-title>
+                <ion-icon name="add"></ion-icon>
+                Add a new user
+            </ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <form #userForm="ngForm">
+      <ion-item>
+          <ion-label position="floating">
+              Firstname
+          </ion-label>
+          <ion-input [(ngModel)]="currentFirstname" id="firstname-input" name="firstName" #firstNameInput=ngModel
+                     type="string" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+          <ion-label position="floating">
+              Lastname
+          </ion-label>
+          <ion-input [(ngModel)]="currentLastname" id="lastname-input" name="lastName" #lastNameInput=ngModel
+                     type="string" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+          <ion-label position="floating">
+              Email
+          </ion-label>
+          <ion-input [(ngModel)]="currentEmail" id="email-input" name="email" #emailInput=ngModel
+                     type="email" required></ion-input>
+      </ion-item>
+      </form>
+
+
+    <ion-footer>
+
+            <ion-button [disabled]="!userForm.form.valid" expand="block" color="primary" (click)="editUser()">
+                Edit user
+            </ion-button>
+        <ion-button expand="block" color="danger" (click)="dismissModal()"> Cancel</ion-button>
+    </ion-footer>
+</ion-content>

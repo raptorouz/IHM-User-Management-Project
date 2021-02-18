@@ -6,6 +6,8 @@ import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
 import { UserListComponent } from './user-list/user-list.component';
+import { AddUserModalComponent } from '../modal/add-user-modal/add-user-modal.component';
+import { EditUserModalComponent } from '../modal/edit-user-modal/edit-user-modal.component';
 
 
 
@@ -16,6 +18,6 @@ import { UserListComponent } from './user-list/user-list.component';
     IonicModule,
     HomePageRoutingModule,
   ],
-  declarations: [HomePage,UserListComponent]
+  declarations: [HomePage,UserListComponent,AddUserModalComponent,EditUserModalComponent]
 })
 export class HomePageModule {}

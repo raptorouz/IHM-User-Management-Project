@@ -20,6 +20,12 @@ export class UserListComponent {
 @Output()
   deletedUser= new EventEmitter<number>();
 
+@Output()
+  addUserClicked = new EventEmitter<any>();
+
+  @Output()
+  editUserClicked= new EventEmitter<User>();
+
   constructor(private modalController: ModalController,
     public userService: UserService,public router:Router,
   public alertController:AlertController) {
@@ -35,28 +41,35 @@ export class UserListComponent {
     await this.router.navigate(['user', id]);
   }
 
-async deleteUser(id:number){
+  async deleteUser(id:number){
 
-    const alert = await this.alertController.create({
-      cssClass: 'my-custom-class',
-      header: 'Confirm!',
-      message: 'Are you sure you want to delete this item ?',
-      buttons: [
-        {
-          text: 'No',
-          role: 'cancel',
-          cssClass: 'secondary',
-        }, {
-          text: 'Yes',
-          handler: () => {
-            this.userService.deleteUser(id).subscribe(response => this.deletedUser.emit(id));
+      const alert = await this.alertController.create({
+        cssClass: 'my-custom-class',
+        header: 'Confirm!',
+        message: 'Are you sure you want to delete this item ?',
+        buttons: [
+          {
+            text: 'No',
+            role: 'cancel',
+            cssClass: 'secondary',
+          }, {
+            text: 'Yes',
+            handler: () => {
+              this.userService.deleteUser(id).subscribe(response => this.deletedUser.emit(id));
+            }
           }
-        }
-      ]
-    });
+        ]
+      });
 
-    await alert.present();
+      await alert.present();
 
-}
+  }
+
+  addUser(){
+    this.addUserClicked.emit();
+  }
+  editUser(clickedUser:User){
+    this.editUserClicked.emit(clickedUser);
+  }
 
 }
