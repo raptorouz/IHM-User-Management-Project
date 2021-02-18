@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { ModalController } from '@ionic/angular';
+import { AlertController, ModalController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { UserService } from 'src/app/api/user.service';
 import { User } from 'src/app/interface/user';
@@ -17,9 +17,12 @@ export class UserListComponent {
   userList: User;
 
 
+@Output()
+  deletedUser= new EventEmitter<number>();
 
-
-  constructor(private modalController: ModalController,public userService: UserService,public router:Router) {
+  constructor(private modalController: ModalController,
+    public userService: UserService,public router:Router,
+  public alertController:AlertController) {
   }
 
   ngOnInit() {
@@ -31,5 +34,29 @@ export class UserListComponent {
   async details(id: number) {
     await this.router.navigate(['user', id]);
   }
+
+async deleteUser(id:number){
+
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Confirm!',
+      message: 'Are you sure you want to delete this item ?',
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel',
+          cssClass: 'secondary',
+        }, {
+          text: 'Yes',
+          handler: () => {
+            this.userService.deleteUser(id).subscribe(response => this.deletedUser.emit(id));
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+
+}
 
 }

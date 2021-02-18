@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { filter, map } from 'rxjs/operators';
 import { UserService } from '../api/user.service';
 import { User } from '../interface/user';
 
@@ -23,9 +24,15 @@ export class HomePage implements OnInit {
     this.userService.getUserList().subscribe(users => this.subject.next(users));
   }
 
-logout(){
-  localStorage.clear();
-  this.router.navigateByUrl('login');
-}
+  logout(){
+    localStorage.clear();
+    this.router.navigateByUrl('login');
+  }
+  refreshDelete(id:number){
+    this.userList$ = this.userList$.pipe(
+      map( userArr=> userArr.filter(user=>user.id != id))
+    );
 
+
+  }
 }

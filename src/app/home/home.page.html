@@ -1,6 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-button  expand="block" (click)="logout()">
+    <ion-button  expand="block" (click)="logout()" >
+      Log Out
         <ion-icon name="power"></ion-icon>
         </ion-button>
   </ion-toolbar>
@@ -17,5 +18,5 @@
         <ion-icon name="add"></ion-icon>
     </ion-button>
 </div>
-    <app-user-list [userList]="userList$ | async"></app-user-list>
+    <app-user-list [userList]="userList$ | async" (deletedUser)="refreshDelete($event)"></app-user-list>
 </ion-content>

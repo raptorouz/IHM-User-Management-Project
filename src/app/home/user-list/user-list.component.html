@@ -15,11 +15,11 @@
     </ion-card-content>
     <ion-card-content class="ion-align-self-center">
         <ion-footer>
-            <ion-button class="align-self-end" color="success" >
-                <ion-icon name="swap-horizontal-outline"></ion-icon>
-            </ion-button>
             <ion-button class="align-self-end" >
-                <ion-icon name="create-outline"></ion-icon>
+                <ion-icon name="create"></ion-icon>
+            </ion-button>
+            <ion-button class="align-self-end" color="danger" (click)="deleteUser(user.id)" >
+                <ion-icon name="trash"></ion-icon>
             </ion-button>
         </ion-footer>
     </ion-card-content>
