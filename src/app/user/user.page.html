@@ -1,9 +1,23 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>user</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button>Back</ion-back-button>
+    </ion-buttons>
+    <ion-title>User Detail</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-card *ngIf="userDetail$ | async as user">
+    <ion-card-header>
+      <ion-card-title>{{user.first_name}} {{user.last_name}}</ion-card-title>
+    </ion-card-header>
 
+    <ion-card-content>
+      <ion-item>
+        <img [src]="user.avatar">
+      </ion-item>
+      <p>{{user.email}}</p>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import { UserService } from '../api/user.service';
+import { User } from '../interface/user';
 
 @Component({
   selector: 'app-user',
@@ -7,9 +11,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserPage implements OnInit {
 
-  constructor() { }
+  private selectedUserId: number;
+
+  userDetail$: Observable<User>;
+
+  constructor(
+    public userService: UserService,
+    public actRoute: ActivatedRoute
+  ) { }
 
   ngOnInit() {
+    this.selectedUserId = this.actRoute.snapshot.params.id;
+    this.userDetail$ = this.userService.getUserDetail(this.selectedUserId);
   }
+
 
 }

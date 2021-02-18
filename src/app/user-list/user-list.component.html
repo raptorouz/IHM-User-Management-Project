@@ -1,0 +1,37 @@
+<article class="card" *ngFor="let user of userList; trackBy:trackByFn; let i = index">
+    <ion-card-header (click) = details(user.id)>
+    <div class="img-container" (click) = details(user.id)>
+      <img [src]=user.avatar/>
+  </div>
+
+        <ion-card-title>{{user.first_name}} {{user.last_name}}</ion-card-title>
+        <ion-card-subtitle>{{user.email}} </ion-card-subtitle>
+
+    </ion-card-header>
+    <ion-card-content>
+
+
+
+    </ion-card-content>
+    <ion-card-content class="ion-align-self-center">
+        <ion-footer>
+            <ion-button class="align-self-end" color="success" >
+                <ion-icon name="swap-horizontal-outline"></ion-icon>
+            </ion-button>
+            <ion-button class="align-self-end" >
+                <ion-icon name="create-outline"></ion-icon>
+            </ion-button>
+        </ion-footer>
+    </ion-card-content>
+</article>
+<article class="card" >
+
+    <div class="img-container">
+      <img style="margin-top:20px" src="https://findicons.com/files/icons/2443/bunch_of_cool_bluish_icons/512/add_user.png"/>
+    </div>
+    <ion-card-header>
+      <ion-item>
+          <p style="width:100%;text-align:center;">Add a new user</p>
+      </ion-item>
+      </ion-card-header>
+    </article>

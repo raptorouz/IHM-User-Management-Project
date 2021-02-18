@@ -1,0 +1,48 @@
+img{
+  max-width:50%;
+
+}
+.img-container{
+  width:100%;
+  text-align: center;
+}
+:host {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  margin-left:2%;
+}
+.card {
+background-color:#333;
+  width: 99%;
+  margin-left: 7px;
+        border-radius:5px;
+}
+@media screen and (min-width: 48em) {
+  .card {
+      background-color:#333;
+
+
+      width: 46%;
+      margin: 7px;
+  }
+
+}
+@media screen and (min-width: 60em) {
+  .card {
+      background-color:#333;
+
+
+      width: 31%;
+      margin: 7px;
+  }
+
+}
+
+@media screen and (min-width: 78em) {
+
+    .card {
+      width: 23%;
+      margin: 7px;
+    }
+}
