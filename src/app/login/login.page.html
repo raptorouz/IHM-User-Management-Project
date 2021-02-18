@@ -30,14 +30,18 @@
             </ion-item>
         </ion-list>
     </form>
-</ion-content>
-
-<ion-footer>
-    <ion-toolbar>
+    <ion-toolbar style="margin-top:5%;">
         <ion-button id="signin-button" expand="full"
-                    (click)="login()" [disabled]="!loginForm.form.valid">
+                    (click)="login()" size="large" [disabled]="!loginForm.form.valid">
             Login
             <ion-icon slot="end" name="log-in-outline"></ion-icon>
         </ion-button>
+
+        <p> Don't have an account ?<p>
+          <ion-button id="register-button" expand="full"
+                      (click)="register()" size="large">
+              Register
+              <ion-icon slot="end" name="add"></ion-icon>
+          </ion-button>
     </ion-toolbar>
-</ion-footer>
+</ion-content>

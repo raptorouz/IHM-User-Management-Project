@@ -2,8 +2,9 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { Observable } from 'rxjs';
-import { UserService } from '../api/user.service';
-import { User } from '../interface/user';
+import { UserService } from 'src/app/api/user.service';
+import { User } from 'src/app/interface/user';
+
 
 @Component({
   selector: 'app-user-list',

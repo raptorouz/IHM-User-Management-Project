@@ -23,4 +23,9 @@ export class HomePage implements OnInit {
     this.userService.getUserList().subscribe(users => this.subject.next(users));
   }
 
+logout(){
+  localStorage.clear();
+  this.router.navigateByUrl('login');
+}
+
 }

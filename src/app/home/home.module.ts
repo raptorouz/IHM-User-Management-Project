@@ -5,7 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
-import { UserListComponent } from '../user-list/user-list.component';
+import { UserListComponent } from './user-list/user-list.component';
+
 
 
 @NgModule({
